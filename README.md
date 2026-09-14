@@ -1,35 +1,38 @@
-# Sistem per Menaxhimin e Turneut Sportiv
+# Sports Tournament Management System
 
-Platforme full-stack per organizimin, menaxhimin dhe ndjekjen publike te turneve sportive. Projekti perfshin panel administrimi, panel organizatori, panel gjyqtari dhe faqe publike per shikuesit.
+A full-stack platform for organizing, managing, and publicly tracking sports tournaments. The project includes an admin panel, an organizer panel, a referee panel, and public-facing pages for viewers.
 
-## Permbledhje
+## Live Demo
 
-Aplikacioni ndihmon ne menaxhimin e ciklit kryesor te nje turneu sportiv:
+🔗 https://sistem-per-menaxhimin-e-turneut-sportiv-3gei-g8zrsjj9x.vercel.app
 
-- krijimi i sporteve, ekipeve, lojtareve, fushave dhe turneve;
-- regjistrimi i ekipeve ne turne;
-- planifikimi i ndeshjeve dhe caktimi i gjyqtareve;
-- regjistrimi i rezultateve dhe ngjarjeve live;
-- renditjet publike te turneve;
-- gjenerimi dhe shfaqja publike e bracket-eve knockout;
-- autentikimi me role per admin, organizator dhe gjyqtar.
+## Overview
 
-## Funksionalitetet Kryesore
+The application helps manage the main lifecycle of a sports tournament:
 
-- **Autentikim dhe sesione**: login/register me cookie `token` per JWT afatshkurter dhe cookie `sessionId` per sesion te qendrueshem.
-- **Role dhe akses**: admin, organizator, gjyqtar dhe perdorues publik.
-- **Menaxhim turnesh**: krijim turnesh, lidhje me sport, lokacion, data dhe organizator.
-- **Menaxhim ekipesh dhe lojtaresh**: regjistrim ekipesh, profile lojtaresh dhe lidhje me sportin perkates.
-- **Ndeshje live**: perditesime ne kohe reale me Socket.IO dhe cron job per statuset e ndeshjeve.
-- **Rezultate dhe renditje**: ruajtje rezultatesh, fitues, MVP dhe tabela standings.
-- **Bracket knockout**: gjenerim, seed-im, planifikim ndeshjesh dhe avancim fituesish.
-- **Faqe publike**: live matches, standings, brackets dhe players pa nevoje per login.
-- **Kontakt dhe reset password**: forme kontakti dhe email per rikuperim fjalekalimi.
+- creating sports, teams, players, venues, and tournaments
+- registering teams into tournaments
+- scheduling matches and assigning referees
+- recording results and live match events
+- public tournament standings
+- generating and publicly displaying knockout brackets
+- role-based authentication for admin, organizer, and referee
 
-## Teknologjite
+## Key Features
 
-### Frontend
+- **Authentication and sessions**: login/register with a token cookie for short-lived JWTs and a sessionId cookie for persistent sessions.
+- **Roles and access**: admin, organizer, referee, and public user.
+- **Tournament management**: creating tournaments, linked to sport, venue, dates, and organizer.
+- **Team and player management**: team registration, player profiles, linked to the relevant sport.
+- **Live matches**: real-time updates via Socket.IO and a cron job for match status updates.
+- **Results and standings**: storing results, winners, MVPs, and standings tables.
+- **Knockout brackets**: generation, seeding, match scheduling, and winner advancement.
+- **Public pages**: live matches, standings, brackets, and players — no login required.
+- **Contact and password reset**: contact form and email-based password recovery.
 
+## Tech Stack
+
+**Frontend**
 - React
 - Vite
 - React Router
@@ -39,8 +42,7 @@ Aplikacioni ndihmon ne menaxhimin e ciklit kryesor te nje turneu sportiv:
 - Framer Motion
 - Lucide React / React Icons
 
-### Backend
-
+**Backend**
 - Node.js
 - Express
 - PostgreSQL
@@ -52,73 +54,73 @@ Aplikacioni ndihmon ne menaxhimin e ciklit kryesor te nje turneu sportiv:
 - Nodemailer
 - Node Cron
 
-## Struktura e Projektit
+## Project Structure
 
-```text
+```
 .
-+-- backend/
-|   +-- prisma/
-|   |   +-- schema.prisma
-|   +-- src/
-|   |   +-- config/
-|   |   +-- lib/
-|   |   +-- middleware/
-|   |   +-- routes/
-|   |   +-- services/
-|   |   +-- server.js
-|   +-- package.json
-+-- frontend/
-|   +-- src/
-|   |   +-- components/
-|   |   +-- config/
-|   |   +-- context/
-|   |   +-- pages/
-|   |   +-- socket.js
-|   |   +-- App.jsx
-|   +-- package.json
-+-- README.md
+├── backend/
+│   ├── prisma/
+│   │   └── schema.prisma
+│   ├── src/
+│   │   ├── config/
+│   │   ├── lib/
+│   │   ├── middleware/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   └── server.js
+│   └── package.json
+├── frontend/
+│   ├── src/
+│   │   ├── components/
+│   │   ├── config/
+│   │   ├── context/
+│   │   ├── pages/
+│   │   ├── socket.js
+│   │   └── App.jsx
+│   └── package.json
+└── README.md
 ```
 
-## Kerkesat
+## Requirements
 
-Para se ta nisni projektin, sigurohuni qe keni:
+Before running the project, make sure you have:
 
-- Node.js te instaluar;
-- PostgreSQL te instaluar dhe nje databaze te krijuar;
-- npm;
-- kredencialet e databazes;
-- opsionalisht nje Gmail app password per dergimin e email-eve te reset password.
+- Node.js installed
+- PostgreSQL installed with a database created
+- npm
+- database credentials
+- optionally, a Gmail app password for sending password-reset emails
 
-## Konfigurimi Lokal
+## Local Setup
 
-### 1. Klono projektin
+### 1. Clone the project
 
-```bash
+```
 git clone <repo-url>
 cd Sistem-per-Menaxhimin-e-Turneut-Sportiv
 ```
 
-### 2. Instalo varesite
+### 2. Install dependencies
 
 Backend:
 
-```bash
+```
 cd backend
 npm install
 ```
 
 Frontend:
 
-```bash
+```
 cd ../frontend
 npm install
 ```
 
-### 3. Konfiguro backend-in
+### 3. Configure the backend
 
-Krijo nje file `.env` brenda `backend/`:
+Create a `.env` file inside `backend/`:
 
-```env
+```
 PORT=3005
 CLIENT_URL=http://localhost:5173
 
@@ -137,102 +139,100 @@ EMAIL_PASS=your_gmail_app_password
 NODE_ENV=development
 ```
 
-`DATABASE_URL` perdoret nga Prisma. Variablat `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME` dhe `DB_PORT` perdoren nga lidhja ekzistuese `pg` ne backend.
+`DATABASE_URL` is used by Prisma. The `DB_HOST`, `DB_USER`, `DB_PASSWORD`, `DB_NAME`, and `DB_PORT` variables are used by the existing `pg` connection in the backend.
 
-### 4. Konfiguro frontend-in
+### 4. Configure the frontend
 
-Krijo nje file `.env` brenda `frontend/`:
+Create a `.env` file inside `frontend/`:
 
-```env
+```
 VITE_API_URL=http://localhost:3005
 ```
 
-Shenim: frontend-i ka default `http://localhost:5000`, ndersa backend-i ka default `3005`. Per kete arsye, vendosni `VITE_API_URL=http://localhost:3005` ose ndryshoni `PORT` ne backend sipas nevojes.
+Note: the frontend defaults to `http://localhost:5000`, while the backend defaults to `3005`. Because of this, set `VITE_API_URL=http://localhost:3005`, or change `PORT` in the backend as needed.
 
-### 5. Gjenero Prisma client
+### 5. Generate the Prisma client
 
-Nga folderi `backend/`:
+From the `backend/` folder:
 
-```bash
+```
 npx prisma generate
 ```
 
-Nese po e krijoni databazen nga zero, perdorni menyren qe i pershtatet projektit tuaj:
+If you're creating the database from scratch, use whichever approach fits your setup:
 
-```bash
+```
 npx prisma migrate dev
 ```
 
-ose:
+or:
 
-```bash
+```
 npx prisma db push
 ```
 
-## Nisja e Projektit
+## Running the Project
 
-Hapni dy terminale.
+Open two terminals.
 
-Terminali 1 - backend:
+**Terminal 1 — backend:**
 
-```bash
+```
 cd backend
 npm run dev
 ```
 
-Backend-i starton zakonisht ne:
+The backend usually starts at:
 
-```text
+```
 http://localhost:3005
 ```
 
-Terminali 2 - frontend:
+**Terminal 2 — frontend:**
 
-```bash
+```
 cd frontend
 npm run dev
 ```
 
-Frontend-i starton zakonisht ne:
+The frontend usually starts at:
 
-```text
+```
 http://localhost:5173
 ```
 
-## Komandat e Dobishme
+## Useful Commands
 
-Frontend:
+**Frontend:**
 
-```bash
+```
 npm run dev
 npm run build
 npm run lint
 npm run preview
 ```
 
-Backend:
+**Backend:**
 
-```bash
+```
 npm run dev
 npx prisma generate
 npx prisma studio
 ```
 
-Aktualisht skripti `npm test` ne backend eshte placeholder dhe nuk ka suite testesh te konfiguruar.
+Currently the `npm test` script in the backend is a placeholder, and there is no test suite configured.
 
-## Rruget Kryesore
+## Main Routes
 
-### Faqe publike
+**Public pages**
+- `/` - homepage
+- `/live-matches` - live matches
+- `/public/standings` - public standings
+- `/brackets` or `/public/brackets` - public brackets
+- `/public/players` - public players
+- `/contact-us` - contact
 
-- `/` - faqja kryesore
-- `/live-matches` - ndeshjet live
-- `/public/standings` - renditjet publike
-- `/brackets` ose `/public/brackets` - bracket-et publike
-- `/public/players` - lojtaret publik
-- `/contact-us` - kontakt
-
-### Admin
-
+**Admin**
 - `/dashboard`
 - `/sports`
 - `/teams`
@@ -249,8 +249,7 @@ Aktualisht skripti `npm test` ne backend eshte placeholder dhe nuk ka suite test
 - `/users`
 - `/sessions`
 
-### Organizator
-
+**Organizer**
 - `/organizer/dashboard`
 - `/organizer/tournaments`
 - `/organizer/matches`
@@ -259,16 +258,15 @@ Aktualisht skripti `npm test` ne backend eshte placeholder dhe nuk ka suite test
 - `/organizer/standings`
 - `/organizer/brackets`
 
-### Gjyqtar
-
+**Referee**
 - `/referee/dashboard`
 - `/referee/matches`
 - `/referee/live-matches`
 - `/referee/match-results`
 
-## API Kryesore
+## Main API
 
-Backend-i monton disa router-a kryesore:
+The backend mounts several main routers:
 
 - `/api/auth` - login, register, refresh, logout, reset password
 - `/sports`
@@ -290,24 +288,24 @@ Backend-i monton disa router-a kryesore:
 - `/profile`
 - `/dashboard`
 
-## Autentikimi
+## Authentication
 
-Pas login/register, backend-i vendos dy cookie:
+After login/register, the backend sets two cookies:
 
-- `token`: JWT afatshkurter qe perdoret per request-et e mbrojtura;
-- `sessionId`: id e sesionit ne databaze, qe perdoret per te rifreskuar token-in.
+- **token**: a short-lived JWT used for protected requests.
+- **sessionId**: the session ID stored in the database, used to refresh the token.
 
-Endpoint-i `/api/auth/refresh` verifikon `sessionId` dhe leshon nje `token` te ri nese sesioni eshte ende valid.
+The `/api/auth/refresh` endpoint verifies the `sessionId` and issues a new token if the session is still valid.
 
-## Shenime per Zhvillim
+## Development Notes
 
-- Sigurohuni qe PostgreSQL eshte ndezur para se te nisni backend-in.
-- Sigurohuni qe `CLIENT_URL` ne backend perputhet me URL-ne e frontend-it.
-- Sigurohuni qe `VITE_API_URL` ne frontend perputhet me URL-ne e backend-it.
-- Per cookie auth, request-et frontend duhet te perdorin kredenciale/cookies.
-- Socket.IO perdor te njejten `VITE_API_URL` si API-ja.
-- Per reset password me Gmail, perdorni app password, jo password-in normal te email-it.
+- Make sure PostgreSQL is running before starting the backend.
+- Make sure `CLIENT_URL` in the backend matches the frontend's URL.
+- Make sure `VITE_API_URL` in the frontend matches the backend's URL.
+- For cookie-based auth, frontend requests must include credentials/cookies.
+- Socket.IO uses the same `VITE_API_URL` as the API.
+- For password reset via Gmail, use an app password, not your regular email password.
 
-## Licenca
+## License
 
-Ky projekt eshte krijuar per qellime akademike dhe zhvillimore.
+This project was created for academic and development purposes.
